@@ -16,20 +16,20 @@ import SwiftUI
 
 @main
 
-
+        // Do the same handling than in .onOpenURL
 struct messingaroundApp: App {
     var body: some Scene {
         WindowGroup {
-            AndrewsBackendTestView().onOpenURL { (url) in
-                        //print(url)
-                        let components = url.absoluteString.components(separatedBy: "code=")
-                        let lastPart = components.last!
-                        print(lastPart)
-                        callbac(accessCode: lastPart)
-                    
-                
-                }
-        }
+            AndrewsBackendTestView()
+                .onOpenURL { (url) in
+                print(url)
+                let components = url.absoluteString.components(separatedBy: "code=")
+                //look at the top of the SwiftUiWebView for an explanation of this character stripping
+                let lastPart = components.last!
+                print(lastPart)
+                callbac(accessCode: lastPart)
+                            }
+            }
     }
 }
 

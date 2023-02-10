@@ -7,32 +7,10 @@
 
 import Foundation
 
-func ApiToken() -> Int{
-    
-    if let url = URL(string: "https://accounts.spotify.com/api/token") {
-        var postRequest = URLRequest(url: url)
-        postRequest.httpMethod = "POST"
-        let bodyParams = "grant_type=authorization_code"
-        
-        postRequest.httpBody = bodyParams.data(using: String.Encoding.ascii, allowLossyConversion: true)
-        let id = "daf925983160411786bc9afd3c8db891"
-        let secret = "2be54995915c4bd197d6d85650faf39d"
-        let combined = "\(id):\(secret)"
-        let combo = "\(id):\(secret)".toBase64()
-        
-        postRequest.addValue("Basic \(combo)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: postRequest) { (data, response, error) in
-            guard let data = data else {
-                return
-            }
-            print(String(data: data, encoding: String.Encoding.utf8)!)
-        }
-        
-        task.resume()
-    }
-    return 1
-}
+//we get the access code from the onOpenURl
+
+//format of the url is potify-api-example-app://?code=AQCulwXMtfa1NLv1cRwiea133eSjPrB-MledfVr5cmqcH0II54iWadHIX_CSE7ExAw32Bf26TqpZs_AhBHpE-gE3C41K12x2Eb9s-UVOCvCLX8A50PvsdJhmmdy5RCiEsvY_VCvfLxM3N3QjEL8OKLXzxkyPsXW3xSNOOqD7-uT_mFQEL4zbjJRXtMdVjDs2R8raDBpQ&state=yu6qfBs3n4aRXpy3
+//we need everything after code= to make the next request for tokens
 
 func callbac(accessCode: String) {
     
@@ -78,10 +56,12 @@ func callbac(accessCode: String) {
             }
         } else {
             let responseString = String(data: data, encoding: .utf8)
-            print(responseString)
+            print(responseString) //this prints the access token information
         }
     }
 }
+
+//this function is just a bunch of formatting bs for the post request to the api/token endpoint
 func sendPostRequest(options: [String: Any], completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
     let endpoint = "https://accounts.spotify.com/api/token"
     guard let endpointUrl = URL(string: endpoint) else {
@@ -110,24 +90,21 @@ func sendPostRequest(options: [String: Any], completion: @escaping (Data?, URLRe
     func login(){
         
         let state = randomString(length: 16)
-        let scope = "streaming++++++++++++++++++user-read-email++++++++++++++++++user-read-private++++++++++++++++++playlist-modify"
-        let id = "daf925983160411786bc9afd3c8db891"
         let redirect = "spotify-api-example-app%3A%2F%2F"
-        let redirect2 = "http%3A%2F%2Flocalhost%3A8888"
-        let url =  URL(string:"https://accounts.spotify.com/authorize?response_type=code&client_id=daf925983160411786bc9afd3c8db891&scope=playlist-modify-public&redirect_uri="+redirect+"&state="+state)!
+        let url =  URL(string:"https://accounts.spotify.com/en/authorize?client_id=daf925983160411786bc9afd3c8db891&response_type=code&redirect_uri="+redirect+"&scope=playlist-modify-public&show_dialog=True&state="+state)!
         //print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         print(url)
+        
+        //This just checks that the url is valid
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) {(response, data, error) in
             guard data != nil else { return }
-            print(String(data: data!, encoding: .utf8)!)
+            //print(String(data: data!, encoding: .utf8)!)
         }
         
         
     }
-    
-    
     
     func randomString(length: Int) -> String {
         

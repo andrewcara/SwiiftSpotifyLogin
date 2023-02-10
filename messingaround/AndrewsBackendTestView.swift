@@ -14,8 +14,7 @@ struct AndrewsBackendTestView: View {
         NavigationView{
             VStack{
             Button(action:{
-                login()
-                
+                let _ = login()
 
                 showResult.toggle()
             },

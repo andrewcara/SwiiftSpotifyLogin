@@ -10,12 +10,9 @@
 		92F05E0A298D930F00796C4C /* messingaroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F05E09298D930F00796C4C /* messingaroundApp.swift */; };
 		92F05E0E298D931000796C4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F05E0D298D931000796C4C /* Assets.xcassets */; };
 		92F05E11298D931000796C4C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F05E10298D931000796C4C /* Preview Assets.xcassets */; };
-		92F05E19298D938500796C4C /* hello_world.py in Resources */ = {isa = PBXBuildFile; fileRef = 92F05E18298D938500796C4C /* hello_world.py */; };
 		92F05E1D298D9DDE00796C4C /* SwiftUIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F05E1C298D9DDE00796C4C /* SwiftUIWebView.swift */; };
 		92F05E20298D9E0100796C4C /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 92F05E1F298D9E0100796C4C /* PythonKit */; };
 		92F05E2C299565B600796C4C /* AndrewsBackendTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F05E2B299565B600796C4C /* AndrewsBackendTestView.swift */; };
-		92F05E4C2995782200796C4C /* view.html in Resources */ = {isa = PBXBuildFile; fileRef = 92F05E4B2995782200796C4C /* view.html */; };
-		92F05E4E2995788000796C4C /* html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F05E4D2995788000796C4C /* html.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +21,8 @@
 		92F05E0D298D931000796C4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92F05E10298D931000796C4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		92F05E12298D931000796C4C /* messingaround.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = messingaround.entitlements; sourceTree = "<group>"; };
-		92F05E18298D938500796C4C /* hello_world.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = hello_world.py; sourceTree = "<group>"; };
 		92F05E1C298D9DDE00796C4C /* SwiftUIWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIWebView.swift; sourceTree = "<group>"; };
 		92F05E2B299565B600796C4C /* AndrewsBackendTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewsBackendTestView.swift; sourceTree = "<group>"; };
-		92F05E4B2995782200796C4C /* view.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = view.html; sourceTree = "<group>"; };
-		92F05E4D2995788000796C4C /* html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = html.swift; sourceTree = "<group>"; };
 		92F05E4F299590E600796C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,10 +63,7 @@
 				92F05E0D298D931000796C4C /* Assets.xcassets */,
 				92F05E12298D931000796C4C /* messingaround.entitlements */,
 				92F05E0F298D931000796C4C /* Preview Content */,
-				92F05E18298D938500796C4C /* hello_world.py */,
 				92F05E2B299565B600796C4C /* AndrewsBackendTestView.swift */,
-				92F05E4B2995782200796C4C /* view.html */,
-				92F05E4D2995788000796C4C /* html.swift */,
 			);
 			path = messingaround;
 			sourceTree = "<group>";
@@ -150,9 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F05E11298D931000796C4C /* Preview Assets.xcassets in Resources */,
-				92F05E19298D938500796C4C /* hello_world.py in Resources */,
 				92F05E0E298D931000796C4C /* Assets.xcassets in Resources */,
-				92F05E4C2995782200796C4C /* view.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +154,6 @@
 			files = (
 				92F05E2C299565B600796C4C /* AndrewsBackendTestView.swift in Sources */,
 				92F05E1D298D9DDE00796C4C /* SwiftUIWebView.swift in Sources */,
-				92F05E4E2995788000796C4C /* html.swift in Sources */,
 				92F05E0A298D930F00796C4C /* messingaroundApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
