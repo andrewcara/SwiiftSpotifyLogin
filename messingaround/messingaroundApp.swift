@@ -21,7 +21,13 @@ struct messingaroundApp: App {
     var body: some Scene {
         WindowGroup {
             AndrewsBackendTestView().onOpenURL { (url) in
-                        print(url)
+                        //print(url)
+                        let components = url.absoluteString.components(separatedBy: "code=")
+                        let lastPart = components.last!
+                        print(lastPart)
+                        callbac(accessCode: lastPart)
+                    
+                
                 }
         }
     }

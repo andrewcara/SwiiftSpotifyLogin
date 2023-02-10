@@ -34,13 +34,12 @@ func ApiToken() -> Int{
     return 1
 }
 
-func callbac() {
+func callbac(accessCode: String) {
     
     let client_id = "daf925983160411786bc9afd3c8db891"
     let client_secret = "2be54995915c4bd197d6d85650faf39d"
     let redirect_uri = "spotify-api-example-app%3A%2F%2F"
-    let code =
-    "AQA0cojnLkMXyVcbilR8SkT2XYdvYqQ4kl_tjS8naImlSia8-6dq_dQbldATW-N4DdJHy8VIRaqif9h1NiOnn6D5wZ8xZbX_UZaFNSV53oL5Xg6qbUJ6IihQpWlklWLIETooAXgQ-sdEL1i2bK469GhA9CAQOmMBgqZ4psxj"
+    let code = accessCode
     let authOptions: [String: Any] = [
         "form": [
             "grant_type": "authorization_code",
@@ -54,6 +53,34 @@ func callbac() {
         "json": true,
     ]
     
+    sendPostRequest(options: authOptions) { (data, response, error) in
+        if let error = error {
+            print("Error: \(error)")
+            return
+        }
+        
+        guard let data = data, let response = response as? HTTPURLResponse else {
+            print("Error: No data or response")
+            return
+        }
+        
+        if response.statusCode != 200 {
+            print("Error: Response code is not 200")
+            return
+        }
+        
+        if let json = true as? Bool, json == true {
+            do {
+                let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+                print(jsonObject)
+            } catch {
+                print("Error: Unable to parse JSON")
+            }
+        } else {
+            let responseString = String(data: data, encoding: .utf8)
+            print(responseString)
+        }
+    }
 }
 func sendPostRequest(options: [String: Any], completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
     let endpoint = "https://accounts.spotify.com/api/token"
@@ -79,7 +106,7 @@ func sendPostRequest(options: [String: Any], completion: @escaping (Data?, URLRe
     URLSession.shared.dataTask(with: request, completionHandler: completion).resume()
 }
 
-    
+
     func login(){
         
         let state = randomString(length: 16)
@@ -87,7 +114,7 @@ func sendPostRequest(options: [String: Any], completion: @escaping (Data?, URLRe
         let id = "daf925983160411786bc9afd3c8db891"
         let redirect = "spotify-api-example-app%3A%2F%2F"
         let redirect2 = "http%3A%2F%2Flocalhost%3A8888"
-        let url =  URL(string:"https://accounts.spotify.com/authorize?response_type=code&client_id=daf925983160411786bc9afd3c8db891&scope=user-read-private%20user-read-email&redirect_uri="+redirect+"&state="+state)!
+        let url =  URL(string:"https://accounts.spotify.com/authorize?response_type=code&client_id=daf925983160411786bc9afd3c8db891&scope=playlist-modify-public&redirect_uri="+redirect+"&state="+state)!
         //print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
